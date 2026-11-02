@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 714 747">
   <style>
-    g { stroke: #121316; }
-    @media (prefers-color-scheme: dark) { g { stroke: #ecedef; } }
+    g { stroke: #15233b; }
+    @media (prefers-color-scheme: dark) { g { stroke: #e4eaf1; } }
   </style>
   <g fill="none" stroke-width="44" stroke-linecap="round" stroke-linejoin="round">
     <path d="M19.1 581L275.9 20M42 581.6L298.2 22M64.1 582.2L319.7 24M90.4 581.8L152.2 447M131.4 643.1L194.6 505M185.5 380L347.3 26.6M258.6 382L354.8 172.1M579 643L614.2 584"/>

@@ -106,27 +106,6 @@ toggle.addEventListener("click", (event) => {
 });
 
 
-// ---------- Scroll reveal ----------
-
-const revealEls = document.querySelectorAll(".reveal");
-
-// Siblings that enter together come in one after another.
-revealEls.forEach((el) => {
-  const siblings = [...el.parentElement.children].filter((c) => c.classList.contains("reveal"));
-  el.style.setProperty("--delay", siblings.indexOf(el) * 0.06 + "s");
-});
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add("is-visible");
-    observer.unobserve(entry.target);
-  });
-}, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-
-revealEls.forEach((el) => observer.observe(el));
-
-
 // ---------- Footer year ----------
 
 document.querySelector(".year").textContent = new Date().getFullYear();
