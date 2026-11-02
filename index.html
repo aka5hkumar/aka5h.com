@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Akash Kumar</title>
+  <meta name="description" content="Akash Kumar, Staff Solutions Architect in Brooklyn. Signal infrastructure, applied AI, and the tooling that takes products from first customer to scale.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
+
+  <meta property="og:title" content="Akash Kumar">
+  <meta property="og:description" content="Staff Solutions Architect in Brooklyn. Signal infrastructure and applied AI.">
+  <meta property="og:url" content="https://aka5h.com">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <!-- Before first paint: flag that JS is on (enables animations) and apply a saved theme. -->
+  <script>
+    document.documentElement.classList.add("js");
+    try {
+      var saved = localStorage.getItem("theme");
+      if (saved) document.documentElement.dataset.theme = saved;
+    } catch (e) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Raleway:wght@300..800&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="nav__logo" href="#top" aria-label="Akash Kumar, back to top">
+      <!-- Reuses the line geometry from the hero mark below. -->
+      <svg viewBox="0 0 634 667" aria-hidden="true"><use href="#mark-lines"/></svg>
+      <span>Akash Kumar</span>
+    </a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Toggle light and dark mode">
+      <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z"/></svg>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="hero__text">
+        <p class="eyebrow">Staff Solutions Architect &middot; Brooklyn, NY</p>
+        <h1 class="hero__title">
+          <span class="line"><span>Taking products</span></span>
+          <span class="line"><span>from first customer</span></span>
+          <span class="line"><span>to <em>real scale.</em></span></span>
+        </h1>
+        <p class="hero__lede">
+          I'm Akash. For eight years I've been the engineer customers talk to: I design the
+          architecture, write the code when it needs writing, and build the AI tooling that lets
+          a product keep growing after I step back. Right now that's signal infrastructure and
+          agentic commerce at Meta.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--solid" href="#work">Selected work</a>
+          <a class="btn" href="#contact">Get in touch</a>
+        </div>
+      </div>
+
+      <!-- The "A" mark, rebuilt from the original akash.nyc animation.
+           Each line draws itself in; script.js adds a colored trail copy. -->
+      <button class="mark" type="button" aria-label="Replay the logo animation">
+        <svg viewBox="0 0 634 667" aria-hidden="true">
+          <g id="mark-lines" class="mark__lines">
+            <g class="mark__rise">
+              <line x1="20"  y1="581" x2="275" y2="20"  pathLength="1"/>
+              <line x1="41"  y1="581" x2="299" y2="23"  pathLength="1"/>
+              <line x1="67"  y1="581" x2="317" y2="25"  pathLength="1"/>
+              <line x1="91"  y1="582" x2="152" y2="446" pathLength="1"/>
+              <line x1="133" y1="643" x2="193" y2="505" pathLength="1"/>
+              <line x1="186" y1="379" x2="347" y2="27"  pathLength="1"/>
+              <line x1="257" y1="381" x2="356" y2="174" pathLength="1"/>
+              <line x1="579" y1="643" x2="613" y2="586" pathLength="1"/>
+            </g>
+            <g class="mark__fall">
+              <line x1="352" y1="28"  x2="614" y2="586" pathLength="1"/>
+              <line x1="356" y1="175" x2="577" y2="641" pathLength="1"/>
+              <line x1="319" y1="252" x2="417" y2="455" pathLength="1"/>
+              <line x1="444" y1="513" x2="506" y2="647" pathLength="1"/>
+              <line x1="20"  y1="583" x2="60"  y2="646" pathLength="1"/>
+              <line x1="92"  y1="584" x2="134" y2="643" pathLength="1"/>
+            </g>
+            <g class="mark__flat">
+              <line x1="276" y1="20"  x2="352" y2="27"  pathLength="1"/>
+              <line x1="186" y1="380" x2="258" y2="382" pathLength="1"/>
+              <line x1="258" y1="382" x2="383" y2="382" pathLength="1"/>
+              <line x1="153" y1="447" x2="417" y2="455" pathLength="1"/>
+              <line x1="193" y1="505" x2="444" y2="512" pathLength="1"/>
+              <line x1="20"  y1="581" x2="91"  y2="583" pathLength="1"/>
+              <line x1="62"  y1="646" x2="134" y2="643" pathLength="1"/>
+              <line x1="506" y1="647" x2="579" y2="643" pathLength="1"/>
+            </g>
+          </g>
+        </svg>
+      </button>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats" aria-label="Highlights">
+      <div class="stat reveal">
+        <span class="stat__num">$1B</span>
+        <span class="stat__label">in ad spend through Meta Signals Gateway within its first year</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat__num">30&nbsp;days &rarr; 1&nbsp;click</span>
+        <span class="stat__label">advertiser onboarding, rebuilt as self-service</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat__num">+40%</span>
+        <span class="stat__label">spend from advertisers who adopted the signal stack, A/B tested</span>
+      </div>
+      <div class="stat reveal">
+        <span class="stat__num">300</span>
+        <span class="stat__label">people in Meta's Solutions org running on a GTM tool I built</span>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section id="work" class="section">
+      <header class="section__head">
+        <p class="eyebrow reveal">Selected work</p>
+        <h2 class="reveal">What I've shipped</h2>
+      </header>
+
+      <div class="work">
+        <a class="work__item reveal" href="https://developers.facebook.com/documentation/ads-commerce/gateway-products" target="_blank" rel="noopener">
+          <span class="work__meta">Meta &middot; Signal infrastructure</span>
+          <h3>Meta Signals Gateway</h3>
+          <p>
+            First-party signal infrastructure that collects, dedupes, and routes conversion data
+            from web, app, CRM, and point-of-sale to Meta, BigQuery, and other destinations. I set
+            the technical roadmap, made the call to go serverless, and owned it from pre-GA to
+            $1B in ad spend in under a year.
+          </p>
+          <span class="work__arrow" aria-hidden="true">&nearr;</span>
+        </a>
+
+        <a class="work__item reveal" href="https://about.fb.com/news/2026/09/the-biggest-news-from-connect-2026/" target="_blank" rel="noopener">
+          <span class="work__meta">Meta Superintelligence Labs &middot; Agentic commerce</span>
+          <h3>Muse partner integrations</h3>
+          <p>
+            Leading the enterprise partner and connector integrations that bring major retail and
+            commerce brands onto Muse, Meta's personal AI agent, so it can shop across their
+            catalogs.
+          </p>
+          <span class="work__arrow" aria-hidden="true">&nearr;</span>
+        </a>
+
+        <article class="work__item reveal">
+          <span class="work__meta">Meta &middot; Applied AI</span>
+          <h3>Signal diagnostics MCP</h3>
+          <p>
+            An MCP server in Python and TypeScript that audits advertiser signal health from the
+            account down to a single ad set, then routes each issue to the people who can fix it.
+            Up to a week of manual investigation per advertiser became one command.
+          </p>
+        </article>
+
+        <a class="work__item reveal" href="https://developers.facebook.com/docs/marketing-api/conversions-api/guides/gateway/" target="_blank" rel="noopener">
+          <span class="work__meta">Meta &middot; Product engineering</span>
+          <h3>Conversions API Gateway, multi-account</h3>
+          <p>
+            Designed in Figma and built the React front end for the multi-tenant flow that lets
+            agencies run many client accounts from one configuration, partnering with backend
+            engineers on tenant isolation.
+          </p>
+          <span class="work__arrow" aria-hidden="true">&nearr;</span>
+        </a>
+
+        <article class="work__item reveal">
+          <span class="work__meta">Meta &middot; GTM tooling</span>
+          <h3>Account prioritization</h3>
+          <p>
+            A nightly pipeline and dashboard (TypeScript, Python, SQL, Claude) that ranks accounts
+            by untapped headroom rather than raw size, with collision-free claiming so reps never
+            overlap. Started in North America and now runs globally.
+          </p>
+        </article>
+
+        <a class="work__item reveal" href="https://cloud.google.com/customers/equifax" target="_blank" rel="noopener">
+          <span class="work__meta">CoEnterprise &middot; Financial services</span>
+          <h3>Equifax on Google Cloud</h3>
+          <p>
+            Led the Python automation workstream for moving sensitive credit-data workflows to
+            GCP. Ran legacy and new processes in parallel, diffed every output automatically, and
+            cut over after a clean validation week.
+          </p>
+          <span class="work__arrow" aria-hidden="true">&nearr;</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="section">
+      <header class="section__head">
+        <p class="eyebrow reveal">Projects</p>
+        <h2 class="reveal">Outside of work</h2>
+      </header>
+
+      <div class="projects">
+        <a class="project reveal" href="https://map.nycmesh.net/" target="_blank" rel="noopener">
+          <h3>NYC Mesh: private LTE network</h3>
+          <p>
+            Built a private CBRS cellular network from the ground up: Open5GS core, an FCC-cleared
+            base station, and hand-programmed SIM cards. NYC Mesh is a volunteer community network
+            and a $900k Empire State Connect-All grant winner.
+          </p>
+          <span class="project__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <a class="project reveal" href="https://github.com/nycmeshnet/greenwood-wifi" target="_blank" rel="noopener">
+          <h3>greenwood-wifi</h3>
+          <p>
+            A Python optimizer that models RF coverage and solar power budgets, then uses integer
+            programming to find the fewest access points that cover a neighborhood.
+          </p>
+          <span class="project__arrow" aria-hidden="true">&rarr;</span>
+        </a>
+
+        <div class="project reveal">
+          <h3>openclaw</h3>
+          <p>
+            A self-hosted agent on my home server that runs scheduled jobs with the Claude API and
+            reports back each morning.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERIENCE ============ -->
+    <section id="experience" class="section">
+      <header class="section__head">
+        <p class="eyebrow reveal">Experience</p>
+        <h2 class="reveal">Where I've been</h2>
+      </header>
+
+      <ol class="timeline">
+        <li class="reveal">
+          <span class="timeline__when">2021 &ndash; Present</span>
+          <div>
+            <h3>Meta</h3>
+            <p class="timeline__role">Staff Solutions Architect</p>
+            <p>
+              Signals Gateway, app signals and Apple privacy strategy, AI tooling for the Solutions
+              org, and now Muse partner integrations. Pod lead for a team of eight, owner of the
+              Solutions Architect hiring pipeline, and Meta's technical representative to the IAB
+              Tech Lab CAPI working group.
+            </p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__when">2018 &ndash; 2021</span>
+          <div>
+            <h3>CoEnterprise</h3>
+            <p class="timeline__role">Software Engineer</p>
+            <p>
+              Data pipelines and automation for financial-services clients on AWS and GCP, including
+              Equifax and Wells Fargo, where the tooling grew billed project revenue by 60%.
+            </p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="timeline__when">2017</span>
+          <div>
+            <h3>New York University</h3>
+            <p class="timeline__role">B.S. Integrated Digital Media</p>
+            <p>Tandon School of Engineering, software engineering track.</p>
+          </div>
+        </li>
+      </ol>
+
+      <dl class="toolkit reveal">
+        <div><dt>Languages</dt><dd>Python, TypeScript, SQL, Java</dd></div>
+        <div><dt>AI</dt><dd>Claude API, MCP, agentic workflows, LangChain, PyTorch</dd></div>
+        <div><dt>Cloud &amp; data</dt><dd>GCP, AWS, BigQuery, Snowflake, Spark, Airflow</dd></div>
+        <div><dt>Infrastructure</dt><dd>Docker, Kubernetes, Terraform, serverless, CI/CD</dd></div>
+      </dl>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="contact">
+      <p class="eyebrow reveal">Contact</p>
+      <h2 class="contact__title reveal">
+        <a href="mailto:me@akash.nyc">Let's talk.</a>
+      </h2>
+      <ul class="contact__links reveal">
+        <li><a class="btn" href="mailto:me@akash.nyc">Email</a></li>
+        <li><a class="btn" href="https://www.linkedin.com/in/akashnyc/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a class="btn" href="https://github.com/aka5hkumar" target="_blank" rel="noopener">GitHub</a></li>
+        <!-- Add resume.pdf to the repo root and uncomment:
+        <li><a class="btn" href="resume.pdf">Resume</a></li>
+        -->
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>&copy; <span class="year">2026</span> Akash Kumar</span>
+    <span>Brooklyn, NY</span>
+  </footer>
+
+</body>
+</html>

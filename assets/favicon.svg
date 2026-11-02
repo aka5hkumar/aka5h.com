@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 714 747">
+  <style>
+    g { stroke: #121316; }
+    @media (prefers-color-scheme: dark) { g { stroke: #ecedef; } }
+  </style>
+  <g fill="none" stroke-width="44" stroke-linecap="round">
+    <path d="M20 581L275 20M41 581L299 23M67 581L317 25M91 582L152 446M133 643L193 505M186 379L347 27M257 381L356 174M579 643L613 586"/>
+    <path d="M352 28L614 586M356 175L577 641M319 252L417 455M444 513L506 647M20 583L60 646M92 584L134 643"/>
+    <path d="M276 20L352 27M186 380L258 382M258 382L383 382M153 447L417 455M193 505L444 512M20 581L91 583M62 646L134 643M506 647L579 643"/>
+  </g>
+</svg>
