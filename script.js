@@ -77,18 +77,32 @@ onScroll();
 
 
 // ---------- Theme toggle ----------
+// The page follows the device's light/dark setting. The toggle overrides it until the device
+// itself switches, at which point the page follows the device again.
 
 const toggle = document.querySelector(".theme-toggle");
+const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const deviceTheme = () => (darkQuery.matches ? "dark" : "light");
 
 function currentTheme() {
-  if (root.dataset.theme) return root.dataset.theme;
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return root.dataset.theme || deviceTheme();
 }
 
 function setTheme(theme) {
+  if (theme === deviceTheme()) {
+    // Same as the device: no override needed.
+    delete root.dataset.theme;
+    try { localStorage.removeItem("theme"); } catch (e) {}
+    return;
+  }
   root.dataset.theme = theme;
-  try { localStorage.setItem("theme", theme); } catch (e) {}
+  try { localStorage.setItem("theme", JSON.stringify({ theme, device: deviceTheme() })); } catch (e) {}
 }
+
+darkQuery.addEventListener("change", () => {
+  delete root.dataset.theme;
+  try { localStorage.removeItem("theme"); } catch (e) {}
+});
 
 toggle.addEventListener("click", (event) => {
   const next = currentTheme() === "dark" ? "light" : "dark";
@@ -104,6 +118,27 @@ toggle.addEventListener("click", (event) => {
   root.style.setProperty("--ty", event.clientY + "px");
   document.startViewTransition(() => setTheme(next));
 });
+
+
+// ---------- Scroll reveal ----------
+
+const revealEls = document.querySelectorAll(".reveal");
+
+// Siblings that enter together come in one after another.
+revealEls.forEach((el) => {
+  const siblings = [...el.parentElement.children].filter((c) => c.classList.contains("reveal"));
+  el.style.setProperty("--delay", siblings.indexOf(el) * 0.06 + "s");
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("is-visible");
+    observer.unobserve(entry.target);
+  });
+}, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+revealEls.forEach((el) => observer.observe(el));
 
 
 // ---------- Footer year ----------

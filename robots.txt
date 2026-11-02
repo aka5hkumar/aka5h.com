@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aka5h.com/sitemap.xml
