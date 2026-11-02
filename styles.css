@@ -251,10 +251,14 @@ a { color: inherit; text-decoration: none; }
   stroke: currentColor;
   stroke-width: 2.6;
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-/* The colored copy that runs ahead of the main lines, then settles as a faint offset. */
-.mark__trail { stroke: var(--trail-3); transform: translate(5px, 4px); opacity: 0.55; }
+/* The colored copy sits exactly under the main lines and draws a beat ahead of them,
+   so color leads each stroke. It fades out once the drawing is done. */
+.mark__trail { stroke: var(--trail-3); opacity: 0; }
+.mark.is-drawing .mark__trail { animation: trail-life 2.8s linear forwards; }
+@keyframes trail-life { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
 
 /* Drawing: every line uses pathLength="1", so a dash of 1 is the whole line. */
 .js .mark line { stroke-dasharray: 1; stroke-dashoffset: 1; }
@@ -496,6 +500,25 @@ a.project:hover .project__arrow { color: var(--accent); transform: translateX(4p
 }
 .timeline h3 { font-size: 1.45rem; font-weight: 600; }
 .timeline p  { color: var(--muted); max-width: 64ch; }
+
+/* Company logos: single-color by default (masked with the text color),
+   brand color when you hover the row. Files live in assets/logos/. */
+.timeline__org { display: flex; align-items: center; gap: 12px; }
+
+.logo {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  background: currentColor;
+  -webkit-mask: var(--logo) center / contain no-repeat;
+          mask: var(--logo) center / contain no-repeat;
+  transition: background 0.4s;
+}
+.logo--meta         { --logo: url("assets/logos/meta.svg"); }
+.logo--coenterprise { --logo: url("assets/logos/coenterprise.svg"); width: 26px; }
+
+.timeline li:hover .logo--meta         { background: #0081fb; }
+.timeline li:hover .logo--coenterprise { background: linear-gradient(135deg, #3155c1, #1ca1b4); }
 
 .timeline__when { font-size: 0.9rem; color: var(--muted); padding-top: 5px; font-variant-numeric: tabular-nums; }
 .timeline .timeline__role { color: var(--text); font-weight: 500; margin-block: 4px 10px; }
