@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -11,13 +11,14 @@
   <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
 
-  <!-- Link previews (iMessage, Slack, WhatsApp, LinkedIn, X). Image: assets/og.png, 1200x630. -->
+  <!-- Link previews (iMessage, Slack, WhatsApp, LinkedIn, X). Image: assets/preview.png, 1200x630.
+       LinkedIn caches by image URL: rename the file when the image changes. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Akash Kumar">
   <meta property="og:title" content="Akash Kumar, Staff Solutions Architect">
   <meta property="og:description" content="Taking products from first customer to real scale. Signal infrastructure and applied AI at Meta.">
   <meta property="og:url" content="https://aka5h.com/">
-  <meta property="og:image" content="https://aka5h.com/assets/og.png">
+  <meta property="og:image" content="https://aka5h.com/assets/preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Akash Kumar, Staff Solutions Architect in Brooklyn: taking products from first customer to real scale.">
@@ -26,6 +27,7 @@
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 
   <!-- Structured data so search engines know who this page is about. -->
   <script type="application/ld+json">
@@ -34,7 +36,7 @@
     "@type": "Person",
     "name": "Akash Kumar",
     "url": "https://aka5h.com/",
-    "image": "https://aka5h.com/assets/og.png",
+    "image": "https://aka5h.com/assets/preview.png",
     "jobTitle": "Staff Solutions Architect",
     "worksFor": { "@type": "Organization", "name": "Meta" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "New York University" },
@@ -70,8 +72,10 @@
 
   <header class="nav">
     <a class="nav__logo" href="#top" aria-label="Akash Kumar, back to top">
-      <!-- Reuses the line geometry from the hero mark below. -->
-      <svg viewBox="0 0 634 667" aria-hidden="true"><use href="#mark-lines"/></svg>
+      <!-- Its own static copy of the mark (same geometry as the favicon). Deliberately not a
+           <use> of the hero mark: that would inherit the draw-in dash styles, and iOS Safari
+           then shows only the round line caps, as dots. -->
+      <svg viewBox="-40 -40 714 747" aria-hidden="true"><path d="M19.1 581L275.9 20M42 581.6L298.2 22M64.1 582.2L319.7 24M90.4 581.8L152.2 447M131.4 643.1L194.6 505M185.5 380L347.3 26.6M258.6 382L354.8 172.1M579 643L614.2 584"/><path d="M350.3 26.8L614.2 584M354.8 172.1L577.8 643.1M319 250.1L416 455M442.8 512L506.7 647M18.9 581.3L60.1 646.1M91.3 583L134 643"/><path d="M275.9 20L350.3 26.8M185.5 380L258.6 382M258.6 382L381.5 382M152.2 447L416 455M194.6 505L442.8 512M19.1 581L91.3 583M60.1 646.1L134 643M506.7 647L579 643"/></svg>
       <span>Akash Kumar</span>
     </a>
     <nav class="nav__links" aria-label="Sections">

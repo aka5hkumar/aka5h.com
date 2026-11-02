@@ -49,7 +49,11 @@ function playIntro() {
 
   // Move the mark to the middle of the screen and scale it up.
   const r = mark.getBoundingClientRect();
-  const scale = Math.min((innerWidth * 0.5) / r.width, (innerHeight * 0.6) / r.height);
+  // Tablets and desktop: draw it big. Phones: draw it only a little larger than its
+  // final size, so the intro doesn't fill the screen and then shrink dramatically.
+  const scale = innerWidth <= 700
+    ? Math.min(210, innerWidth * 0.5) / r.width
+    : Math.min((innerWidth * 0.5) / r.width, (innerHeight * 0.6) / r.height);
   mark.style.setProperty("--ix", innerWidth / 2 - (r.left + r.width / 2) + "px");
   mark.style.setProperty("--iy", innerHeight / 2 - (r.top + r.height / 2) + "px");
   mark.style.setProperty("--is", scale);
@@ -88,21 +92,36 @@ function currentTheme() {
   return root.dataset.theme || deviceTheme();
 }
 
+// Browser UI color (Android Chrome address bar, Safari tab bar). The <meta name="theme-color">
+// tags follow the device via their media queries; a manual override pins both to the page.
+const THEME_COLORS = { light: "#fafaf9", dark: "#0e0f11" };
+const themeMetas = document.querySelectorAll('meta[name="theme-color"]');
+function syncThemeColor() {
+  themeMetas.forEach((meta) => {
+    const own = meta.media.includes("dark") ? "dark" : "light";
+    meta.content = THEME_COLORS[root.dataset.theme || own];
+  });
+}
+
 function setTheme(theme) {
   if (theme === deviceTheme()) {
     // Same as the device: no override needed.
     delete root.dataset.theme;
     try { localStorage.removeItem("theme"); } catch (e) {}
-    return;
+  } else {
+    root.dataset.theme = theme;
+    try { localStorage.setItem("theme", JSON.stringify({ theme, device: deviceTheme() })); } catch (e) {}
   }
-  root.dataset.theme = theme;
-  try { localStorage.setItem("theme", JSON.stringify({ theme, device: deviceTheme() })); } catch (e) {}
+  syncThemeColor();
 }
 
 darkQuery.addEventListener("change", () => {
   delete root.dataset.theme;
   try { localStorage.removeItem("theme"); } catch (e) {}
+  syncThemeColor();
 });
+
+syncThemeColor(); // applies a saved override on load
 
 toggle.addEventListener("click", (event) => {
   const next = currentTheme() === "dark" ? "light" : "dark";

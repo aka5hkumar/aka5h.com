@@ -135,8 +135,9 @@ a { color: inherit; text-decoration: none; }
   height: 27px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 34;      /* viewBox units; the logo is drawn very small */
+  stroke-width: 44;      /* viewBox units; matches the favicon so it holds up at 26px */
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .nav__links { margin-left: auto; display: flex; gap: 28px; }
@@ -229,9 +230,17 @@ a { color: inherit; text-decoration: none; }
   .eyebrow__loc { display: block; margin-top: 4px; }
 }
 
-@media (max-width: 860px) {
+/* Tablets in portrait: the screen is tall, so don't stretch the hero to fill it. */
+@media (orientation: portrait) and (min-width: 701px) {
+  .hero { min-height: 0; padding-block: 72px 88px; }
+}
+
+/* Phones only: tablets in portrait keep the two-column hero. */
+@media (max-width: 700px) {
   .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 24px; }
-  .hero .mark { order: -1; width: min(220px, 55vw); }
+  .hero .mark { order: -1; justify-self: start; width: min(150px, 40vw); }
+  /* the mark is drawn smaller here, so thicken the stroke to keep it near 1px */
+  .hero .mark svg { stroke-width: 4.2; }
 }
 
 
