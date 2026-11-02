@@ -238,9 +238,7 @@ a { color: inherit; text-decoration: none; }
 /* Phones only: tablets in portrait keep the two-column hero. */
 @media (max-width: 700px) {
   .hero { grid-template-columns: 1fr; min-height: 0; padding-top: 24px; }
-  .hero .mark { order: -1; justify-self: start; width: min(150px, 40vw); }
-  /* the mark is drawn smaller here, so thicken the stroke to keep it near 1px */
-  .hero .mark svg { stroke-width: 4.2; }
+  .hero .mark { order: -1; justify-self: start; width: clamp(130px, 40vw, 200px); }
 }
 
 
@@ -277,21 +275,27 @@ a { color: inherit; text-decoration: none; }
 @keyframes trail-life { 0%, 70% { opacity: 1; } 100% { opacity: 0; } }
 
 /* Drawing: every line uses pathLength="1", so a dash of 1 is the whole line. */
-.js .mark line { stroke-dasharray: 1; stroke-dashoffset: 1; }
+/* Undrawn lines are also hidden: with round caps, a fully dashed-out line still paints its
+   end cap, which shows up as a stray dot until that line starts drawing. */
+.js .mark line { stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0; }
 .mark__rise { --g: 0; }
 .mark__fall { --g: 1; }
 .mark__flat { --g: 2; }
 
 .mark.is-drawing line {
-  animation: draw 0.9s var(--ease) forwards;
+  animation: draw 0.9s var(--ease) both;
   animation-delay: calc(var(--g) * 0.28s + var(--i, 0) * 0.05s + 0.18s);
 }
 .mark.is-drawing .mark__trail line {
-  animation: draw 0.9s var(--ease) forwards, trail 1s linear forwards;
+  animation: draw 0.9s var(--ease) both, trail 1s linear forwards;
   animation-delay: calc(var(--g) * 0.28s + var(--i, 0) * 0.05s);
 }
 
-@keyframes draw  { to { stroke-dashoffset: 0; } }
+@keyframes draw  {
+  0%   { stroke-dashoffset: 1; opacity: 0; }
+  1%   { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 1; }
+}
 @keyframes trail {
   0%   { stroke: var(--trail-1); }
   45%  { stroke: var(--trail-2); }
@@ -541,6 +545,46 @@ a.project:hover .project__arrow { color: var(--accent); transform: translateX(4p
 .timeline li:hover .logo--coenterprise { background: linear-gradient(135deg, #3155c1, #1ca1b4); }
 .timeline li:hover .logo--nyu          { background: #57068c; }
 
+/* NYC Mesh (both projects live under nycmeshnet) */
+.project__title { display: flex; align-items: center; gap: 10px; }
+.project__title .logo { width: 24px; height: 24px; }
+.logo--nycmesh { --logo: url("assets/logos/nycmesh.svg"); }
+a.project:hover .logo--nycmesh { background: #ffcc00; }
+
+/* greenwood-wifi is part of NYC Mesh: drop the divider between them and hang it off the
+   parent with a tree line that runs from under the NYC Mesh logo into an elbow. */
+.project { --tree: color-mix(in srgb, var(--muted) 45%, transparent); }
+.project:has(+ .project--child) { border-bottom-color: transparent; padding-bottom: 10px; }
+.project:has(+ .project--child)::after {
+  content: "";
+  position: absolute;
+  left: 11px;              /* centre of the 24px logo */
+  top: 58px;               /* just below the logo */
+  bottom: 0;
+  border-left: 1.5px solid var(--tree);
+}
+.project--child { padding-top: 6px; }
+.project--child .project__title { position: relative; padding-left: 34px; font-size: 1.2rem; }
+.project--child .project__title::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: -6px;               /* meets the parent's line across the row padding */
+  width: 15px;
+  height: calc(6px + 0.6em);
+  border-left: 1.5px solid var(--tree);
+  border-bottom: 1.5px solid var(--tree);
+  border-bottom-left-radius: 5px;
+}
+@media (max-width: 720px) {
+  /* single column: indent the whole child row so its text sits under the parent title */
+  .project--child { padding-left: 34px; }
+  .project--child .project__title { padding-left: 0; }
+  .project--child .project__title::before { left: -23px; }
+  /* keep the parent's text clear of the tree line: align it with its title, after the logo */
+  .project:has(+ .project--child) p { padding-left: 34px; }
+}
+
 .timeline__when { font-size: 0.9rem; color: var(--muted); padding-top: 5px; font-variant-numeric: tabular-nums; }
 .timeline .timeline__role { color: var(--text); font-weight: 500; margin-block: 4px 10px; }
 
@@ -649,7 +693,7 @@ a.project:hover .project__arrow { color: var(--accent); transform: translateX(4p
     transition-duration: 0.01ms !important;
     transition-delay: 0s !important;
   }
-  .js .mark line { stroke-dashoffset: 0; }
+  .js .mark line { stroke-dashoffset: 0; opacity: 1; }
   .js .reveal,
   .js .nav, .js .hero__text > *, .js .stats,
   .js .hero__title .line > span { opacity: 1; transform: none; }

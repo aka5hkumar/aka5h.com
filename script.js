@@ -20,6 +20,22 @@ mark.querySelectorAll(".mark__rise, .mark__fall, .mark__flat").forEach((group) =
   [...group.children].forEach((line, i) => line.style.setProperty("--i", i));
 });
 
+// Keep the lines the same on-screen weight at any size: stroke-width is in viewBox units
+// (the viewBox is 634 wide), so scale it inversely to the mark's rendered width.
+const LINE_PX = 1.4;
+const markSvg = mark.querySelector("svg");
+function sizeStroke() {
+  const w = mark.offsetWidth; // layout width, ignores the intro transform
+  if (w) markSvg.style.strokeWidth = (LINE_PX * 634) / w;
+}
+sizeStroke();
+let resizeQueued = false;
+window.addEventListener("resize", () => {
+  if (resizeQueued) return;
+  resizeQueued = true;
+  requestAnimationFrame(() => { resizeQueued = false; sizeStroke(); });
+});
+
 function drawMark() {
   mark.classList.remove("is-drawing");
   void mark.getBoundingClientRect(); // restart the CSS animation
@@ -49,11 +65,11 @@ function playIntro() {
 
   // Move the mark to the middle of the screen and scale it up.
   const r = mark.getBoundingClientRect();
-  // Tablets and desktop: draw it big. Phones: draw it only a little larger than its
-  // final size, so the intro doesn't fill the screen and then shrink dramatically.
-  const scale = innerWidth <= 700
-    ? Math.min(210, innerWidth * 0.5) / r.width
-    : Math.min((innerWidth * 0.5) / r.width, (innerHeight * 0.6) / r.height);
+  // Draw it large in the middle of the screen, sized from the viewport: up to 68% of the
+  // width on phones, and capped by height everywhere so it never overflows. Then it glides
+  // into its place in the hero, so the drawing is always visibly bigger than where it lands.
+  const target = Math.min(innerWidth * (innerWidth <= 700 ? 0.68 : 0.6), innerHeight * 0.6 * (r.width / r.height));
+  const scale = Math.max(target / r.width, 1.15);
   mark.style.setProperty("--ix", innerWidth / 2 - (r.left + r.width / 2) + "px");
   mark.style.setProperty("--iy", innerHeight / 2 - (r.top + r.height / 2) + "px");
   mark.style.setProperty("--is", scale);

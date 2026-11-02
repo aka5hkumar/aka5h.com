@@ -11,14 +11,14 @@
   <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0e0f11" media="(prefers-color-scheme: dark)">
 
-  <!-- Link previews (iMessage, Slack, WhatsApp, LinkedIn, X). Image: assets/preview.png, 1200x630.
+  <!-- Link previews (iMessage, Slack, WhatsApp, LinkedIn, X). Image: assets/preview-v2.png, 1200x630.
        LinkedIn caches by image URL: rename the file when the image changes. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Akash Kumar">
   <meta property="og:title" content="Akash Kumar, Staff Solutions Architect">
   <meta property="og:description" content="Taking products from first customer to real scale. Signal infrastructure and applied AI at Meta.">
   <meta property="og:url" content="https://aka5h.com/">
-  <meta property="og:image" content="https://aka5h.com/assets/preview.png">
+  <meta property="og:image" content="https://aka5h.com/assets/preview-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Akash Kumar, Staff Solutions Architect in Brooklyn: taking products from first customer to real scale.">
@@ -36,7 +36,7 @@
     "@type": "Person",
     "name": "Akash Kumar",
     "url": "https://aka5h.com/",
-    "image": "https://aka5h.com/assets/preview.png",
+    "image": "https://aka5h.com/assets/preview-v2.png",
     "jobTitle": "Staff Solutions Architect",
     "worksFor": { "@type": "Organization", "name": "Meta" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "New York University" },
@@ -257,7 +257,7 @@
 
       <div class="projects">
         <a class="project reveal" href="https://map.nycmesh.net/" target="_blank" rel="noopener">
-          <h3>NYC Mesh: private LTE network</h3>
+          <h3 class="project__title"><span class="logo logo--nycmesh" aria-hidden="true"></span>NYC Mesh: private LTE network</h3>
           <p>
             Built a private CBRS cellular network from the ground up: Open5GS core, an FCC-cleared
             base station, and hand-programmed SIM cards. NYC Mesh is a volunteer community network
@@ -266,8 +266,8 @@
           <span class="project__arrow" aria-hidden="true">&rarr;</span>
         </a>
 
-        <a class="project reveal" href="https://github.com/nycmeshnet/greenwood-wifi" target="_blank" rel="noopener">
-          <h3>greenwood-wifi</h3>
+        <a class="project project--child reveal" href="https://github.com/nycmeshnet/greenwood-wifi" target="_blank" rel="noopener">
+          <h3 class="project__title">greenwood-wifi</h3>
           <p>
             A Python optimizer that models RF coverage and solar power budgets, then uses integer
             programming to find the fewest access points that cover a neighborhood.
